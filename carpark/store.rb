@@ -1,5 +1,7 @@
 module Carpark
   class Store
+    attr_reader :slots
+
     def initialize
       @cap = nil
       @slots = {}
@@ -13,7 +15,7 @@ module Carpark
       @cap = capacity
 
       @cap.times do |i|
-        @slots[i+1] = nil
+        @slots["#{i+1}"] = nil
       end
     end
 
@@ -23,6 +25,10 @@ module Carpark
       end
 
       slot = free_slot
+
+      unless slot
+        return nil
+      end
 
       @slots[slot] = { ticket: ticket, car_color: car_color }
 
@@ -42,7 +48,7 @@ module Carpark
     end
 
     def full?
-      @slots.length < @cap
+      @slots.map{|_,v| v}.compact.length == @cap
     end
   end
 end

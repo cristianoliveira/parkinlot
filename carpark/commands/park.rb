@@ -3,7 +3,7 @@ require_relative './command'
 module Carpark::Commands
   class Park < Command
     def execute(args)
-      if @store.empty?
+      if @store.nil?
         return "Store is not initialized."
       end
 
