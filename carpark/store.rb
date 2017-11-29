@@ -29,6 +29,10 @@ module Carpark
       slot
     end
 
+    def free(slot_number)
+      @slots[slot_number] = nil
+    end
+
     def free_slot
       @slots.each do |k,v|
         if v.nil?
