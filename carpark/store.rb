@@ -30,7 +30,7 @@ module Carpark
     end
 
     def free_slot
-      @slot.each do |k,v|
+      @slots.each do |k,v|
         if v.nil?
           return k
         end
@@ -38,7 +38,7 @@ module Carpark
     end
 
     def full?
-      @slot.length < @cap
+      @slots.length < @cap
     end
   end
 end

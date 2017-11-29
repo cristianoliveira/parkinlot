@@ -1,10 +1,12 @@
 require_relative 'commands/create'
+require_relative 'commands/park'
 
 module Carpark
   class Core
 
     COMMANDS = {
-      "create_parking_lot" => Carpark::Commands::Create
+      "create_parking_lot" => Carpark::Commands::Create,
+      "park" => Carpark::Commands::Park
     }
 
     def initialize(store)
