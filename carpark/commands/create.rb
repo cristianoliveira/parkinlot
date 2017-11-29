@@ -1,28 +1,24 @@
-module Carpark::Commands
-  class Create
-    def initialize(store)
-      @store = store
-    end
+require_relative './command'
 
+module Carpark::Commands
+  class Create < Command
     def execute(args)
       capacity = args[0]
 
       unless capacity
-        puts "Create command needs a capacity argument"
-        return
+        return "Create command needs a capacity argument"
       end
 
       unless @store.empty?
-        puts "Store was already initialized."
-        return
+        return "Store was already initialized."
       end
 
       begin
         @store.init(Integer(capacity))
 
-        puts "Created a parking lot with #{capacity} slots"
+        "Created a parking lot with #{capacity} slots"
       rescue ArgumentError
-        puts "Invalid capacity. It must be a number."
+        "Invalid capacity. It must be a number."
       end
     end
   end
