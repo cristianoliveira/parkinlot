@@ -26,5 +26,9 @@ module Carpark
 
       cmd.new(@store).execute(arguments)
     end
+
+    def commands_list
+      COMMANDS.keys.sort
+    end
   end
 end

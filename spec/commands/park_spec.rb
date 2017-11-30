@@ -39,11 +39,11 @@ describe "creating store" do
       car_color = "White"
 
       expect(command.execute([nil, nil]))
-        .to eq("Park command need 2 arguments. The ticket and car color.")
+        .to eq("Park command needs 2 arguments. The ticket and car color.")
       expect(command.execute([nil, car_color]))
-        .to eq("Park command need 2 arguments. The ticket and car color.")
+        .to eq("Park command needs 2 arguments. The ticket and car color.")
       expect(command.execute([ticket_num, nil]))
-        .to eq("Park command need 2 arguments. The ticket and car color.")
+        .to eq("Park command needs 2 arguments. The ticket and car color.")
     end
   end
 end
