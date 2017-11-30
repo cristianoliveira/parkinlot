@@ -20,8 +20,6 @@ DOCOPT
 
 begin
   args = Docopt::docopt(USAGE)
-  require "pp"
-  pp args
 
   if args["--version"]
     puts VERSION
@@ -37,10 +35,14 @@ begin
   core = Carpark::Core.new(store)
 
   if args['<filename>'].nil?
-    repl = Carpark::REPL.new(core)
-    repl.loop
+    Carpark::REPL.new(core).loop
   else
-    p "File #{args['<filename>']}"
+    File.foreach(args['<filename>']) do |line, line_num|
+      args = line.split(' ')
+      cmd = args.shift
+
+      puts core.execute(cmd, args)
+    end
   end
 rescue Docopt::Exit => e
   puts e.message

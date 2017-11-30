@@ -1,22 +1,22 @@
 require_relative '../../carpark/store'
 require_relative '../../carpark/commands'
 
-describe "finding by color" do
+describe "finding by ticket" do
   let(:store) { Carpark::Store.new }
-  let(:command) { Carpark::Commands::FindByColor.new(store) }
+  let(:command) { Carpark::Commands::FindSlotByTicket.new(store) }
 
   context "when has data" do
-  before(:each) do
-    store.init(10)
-    store.park("foo", 'white')
-    store.park("foo2", 'white')
-    store.park("bar", 'blue')
-    store.park("baz", 'black')
-  end
+    before(:each) do
+      store.init(5)
+      store.park("foo", 'white')
+      store.park("foo2", 'white')
+      store.park("bar", 'blue')
+      store.park("baz", 'black')
+    end
 
     it "prints the find info" do
-      expect(command.execute(["white"])).to include("foo")
-      expect(command.execute(["white"])).to include("foo2")
+      expect(command.execute(["foo"])).to eq("1")
+      expect(command.execute(["bar"])).to eq("3")
     end
   end
 

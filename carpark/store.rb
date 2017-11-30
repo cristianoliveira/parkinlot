@@ -51,6 +51,10 @@ module Carpark
       @slots.select{|_, value| value && value[:car_color] == color}
     end
 
+    def find_by_ticket(ticket)
+      @slots.select{|_, value| value && value[:ticket] == ticket}
+    end
+
     def full?
       @slots.map{|_,v| v}.compact.length == @cap
     end

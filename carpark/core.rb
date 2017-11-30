@@ -1,8 +1,4 @@
-require_relative 'commands/create'
-require_relative 'commands/park'
-require_relative 'commands/leave'
-require_relative 'commands/status'
-require_relative 'commands/find_by_color'
+require_relative 'commands'
 
 module Carpark
   class Core
@@ -12,7 +8,9 @@ module Carpark
       "park" => Carpark::Commands::Park,
       "leave" => Carpark::Commands::Leave,
       "status" => Carpark::Commands::Status,
-      "registration_numbers_for_cars_with_colour" => Carpark::Commands::FindByColor
+      "registration_numbers_for_cars_with_colour" => Carpark::Commands::FindByColor,
+      "slot_numbers_for_cars_with_colour" => Carpark::Commands::FindSlotByColor,
+      "slot_number_for_registration_number" => Carpark::Commands::FindSlotByTicket,
     }
 
     def initialize(store)

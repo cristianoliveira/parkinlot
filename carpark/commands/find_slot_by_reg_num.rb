@@ -1,27 +1,27 @@
 require_relative './command'
 
 module Carpark::Commands
-  class FindByColor < Command
+  class FindSlotByTicket < Command
     def execute(args)
       if @store.empty?
         return "Store is not initialized."
       end
 
-      color = args[0]
-      unless color
-        return "Filter By Color command needs the color argument."
+      ticket = args[0]
+      unless ticket
+        return "Filter Slot By Ticket Number command needs the number argument."
       end
 
       output = ""
 
-      results = @store.find_by_color(color)
+      results = @store.find_by_ticket(ticket)
       results.each do |k, data|
-        output += "#{data[:ticket]}, "
+        output += "#{k}"
       end
 
       return "Not found" if output.empty?
 
-      output[0..-3]
+      output
     end
   end
 end
