@@ -21,6 +21,10 @@ in memory and with no persistence. I created an abstraction for `store` it
 will make the code flexible cause if we decide to change it after will be way
 easier.
 
+I used a `Hash` instead of an `Array` for this just for convenience. Using a hash
+we can create the slots with the correct slots number with an array we would have
+to manage it by the array indexes.
+
 ### The core
 
 Since we will have two ways for using the app one as a REPL and one by file
