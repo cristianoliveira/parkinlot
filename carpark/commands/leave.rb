@@ -10,7 +10,7 @@ module Carpark::Commands
       slot_number = args[0]
 
       if slot_number.nil?
-        return "Leave command need 1 arguments. The slot leaving"
+        return "Leave command needs 1 arguments. The slot leaving"
       end
 
       @store.free(slot_number)

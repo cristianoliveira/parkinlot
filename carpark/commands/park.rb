@@ -10,7 +10,7 @@ module Carpark::Commands
       ticket_num, car_color = args[0], args[1]
 
       if ticket_num.nil? || car_color.nil?
-        return "Park command need 2 arguments. The ticket and car color."
+        return "Park command needs 2 arguments. The ticket and car color."
       end
 
       slot = @store.park(ticket_num, car_color)

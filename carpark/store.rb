@@ -3,7 +3,7 @@ module Carpark
     attr_reader :slots
 
     def initialize
-      @cap = nil
+      @cap = 0
       @slots = {}
     end
 
@@ -14,9 +14,7 @@ module Carpark
     def init(capacity)
       @cap = capacity
 
-      @cap.times do |i|
-        @slots["#{i+1}"] = nil
-      end
+      @slots = Hash[@cap.times.map{|i| ["#{i+1}", nil]}]
     end
 
     def park(ticket, car_color)
